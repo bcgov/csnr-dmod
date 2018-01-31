@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.swagger</groupId>
   <artifactId>nrs-dm-microservice</artifactId>
-  <packaging>jar</packaging>
   <name>CNSR Document Service</name>
   <version>1.0.0</version>
+  <packaging>jar</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -73,6 +73,196 @@
         <version>${fuse.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-server</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-servlet</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-jndi</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-jsp</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-http</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-io</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-util</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.jetty</groupId>
+      	<artifactId>jetty-security</artifactId>
+      	<version>${jetty-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>com.wordnik</groupId>
+      	<artifactId>swagger-jaxrs_2.10</artifactId>
+      	<version>1.3.0</version>
+      </dependency>
+      <dependency>
+      	<groupId>log4j</groupId>
+      	<artifactId>log4j</artifactId>
+      	<version>1.2.17</version>
+      </dependency>
+      <dependency>
+      	<groupId>io.swagger</groupId>
+      	<artifactId>swagger-jersey2-jaxrs</artifactId>
+      	<version>${swagger-core-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>ch.qos.logback</groupId>
+      	<artifactId>logback-classic</artifactId>
+      	<version>${logback-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>ch.qos.logback</groupId>
+      	<artifactId>logback-core</artifactId>
+      	<version>${logback-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>junit</groupId>
+      	<artifactId>junit</artifactId>
+      	<version>${junit-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>javax.servlet</groupId>
+      	<artifactId>servlet-api</artifactId>
+      	<version>${servlet-api-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.glassfish.jersey.containers</groupId>
+      	<artifactId>jersey-container-servlet-core</artifactId>
+      	<version>${jersey2-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.glassfish.jersey.containers</groupId>
+      	<artifactId>jersey-container-servlet</artifactId>
+      	<version>${jersey2-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.glassfish.jersey.media</groupId>
+      	<artifactId>jersey-media-multipart</artifactId>
+      	<version>${jersey2-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.glassfish.jersey.media</groupId>
+      	<artifactId>jersey-media-json-jackson</artifactId>
+      	<version>2.4.1</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.glassfish.jersey.ext</groupId>
+      	<artifactId>jersey-spring3</artifactId>
+      	<version>${jersey2-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.glassfish.jersey.connectors</groupId>
+      	<artifactId>jersey-apache-connector</artifactId>
+      	<version>${jersey2-version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>com.brsanthu</groupId>
+      	<artifactId>migbase64</artifactId>
+      	<version>2.2</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.dm</groupId>
+      	<artifactId>nrs-dm-rest-client</artifactId>
+      	<version>1.2.0.4</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.dm</groupId>
+      	<artifactId>nrs-dm-service</artifactId>
+      	<version>1.2.0.4</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.dm</groupId>
+      	<artifactId>nrs-dm-parent</artifactId>
+      	<version>1.2.0.4</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.dm</groupId>
+      	<artifactId>nrs-dm-model</artifactId>
+      	<version>1.2.0.4</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.dm</groupId>
+      	<artifactId>nrs-dm-rest-common</artifactId>
+      	<version>1.2.0.4</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.common</groupId>
+      	<artifactId>nrs-common-rest-client</artifactId>
+      	<version>1.2.0.6</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.common</groupId>
+      	<artifactId>nrs-common-model</artifactId>
+      	<version>1.2.0.6</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.common</groupId>
+      	<artifactId>nrs-common-util</artifactId>
+      	<version>1.2.0.6</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.common</groupId>
+      	<artifactId>nrs-common-rest-common</artifactId>
+      	<version>1.2.0.6</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.nrs.common</groupId>
+      	<artifactId>nrs-common-service-api</artifactId>
+      	<version>1.2.0.6</version>
+      </dependency>
+      <dependency>
+      	<groupId>ca.bc.gov.webade</groupId>
+      	<artifactId>webade-oauth2-rest-token-client</artifactId>
+      	<version>1.2.0.4</version>
+      </dependency>
+      <dependency>
+      	<groupId>oracle.ucm</groupId>
+      	<artifactId>ridc</artifactId>
+      	<version>11.1.1</version>
+      </dependency>
+      <dependency>
+      	<groupId>com.google.code.gson</groupId>
+      	<artifactId>gson</artifactId>
+      	<version>2.8.0</version>
+      </dependency>
+      <dependency>
+      	<groupId>javax</groupId>
+      	<artifactId>javaee-api</artifactId>
+      	<version>7.0</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.codehaus.jackson</groupId>
+      	<artifactId>jackson-jaxrs</artifactId>
+      	<version>1.9.13</version>
+      </dependency>
+      <dependency>
+      	<groupId>io.swagger</groupId>
+      	<artifactId>swagger-annotations</artifactId>
+      	<version>1.5.3</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -193,47 +383,38 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jndi</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jsp</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-http</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-io</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-util</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-security</artifactId>
-      <version>${jetty-version}</version>
     </dependency>
     <dependency>
       <groupId>com.wordnik</groupId>
       <artifactId>swagger-jaxrs_2.10</artifactId>
-      <version>1.3.0</version>
       <optional>true</optional>
       <exclusions>
         <!-- avoid this old dependency which breaks CXF -->
@@ -256,7 +437,6 @@
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.arquillian.junit</groupId>
@@ -272,136 +452,112 @@
       <groupId>io.swagger</groupId>
       <artifactId>swagger-jersey2-jaxrs</artifactId>
       <scope>compile</scope>
-      <version>${swagger-core-version}</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>${logback-version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
-      <version>${logback-version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>${junit-version}</version>
         <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>servlet-api</artifactId>
-        <version>${servlet-api-version}</version>
     </dependency>
     <dependency>
         <groupId>org.glassfish.jersey.containers</groupId>
         <artifactId>jersey-container-servlet-core</artifactId>
-        <version>${jersey2-version}</version>
     </dependency>
 	<dependency>
 			    <groupId>org.glassfish.jersey.containers</groupId>
 			    <artifactId>jersey-container-servlet</artifactId>
-			    <version>${jersey2-version}</version>
 			</dependency>
     <dependency>
         <groupId>org.glassfish.jersey.media</groupId>
         <artifactId>jersey-media-multipart</artifactId>
-        <version>${jersey2-version}</version>
     </dependency>
 	<dependency>
 				<groupId>org.glassfish.jersey.media</groupId>
 				<artifactId>jersey-media-json-jackson</artifactId>
-				<version>2.4.1</version>
 			</dependency>
 			<dependency>
 			    <groupId>org.glassfish.jersey.ext</groupId>
 			    <artifactId>jersey-spring3</artifactId>
-			    <version>${jersey2-version}</version>
 			</dependency>	
 	
 	<dependency>
 			    <groupId>org.glassfish.jersey.connectors</groupId>
 			    <artifactId>jersey-apache-connector</artifactId>
-			    <version>${jersey2-version}</version>
 			</dependency>
       <!-- Base64 encoding that works in both JVM and Android -->
     <dependency>
         <groupId>com.brsanthu</groupId>
         <artifactId>migbase64</artifactId>
-        <version>2.2</version>
     </dependency>
     
     <dependency>
         <groupId>ca.bc.gov.nrs.dm</groupId>
-        <artifactId>nrs-dm-rest-client</artifactId>
-        <version>1.2.0.4</version>              
+        <artifactId>nrs-dm-rest-client</artifactId>              
     </dependency>
     <dependency>
         <groupId>ca.bc.gov.nrs.dm</groupId>
-        <artifactId>nrs-dm-service</artifactId>
-        <version>1.2.0.4</version>              
+        <artifactId>nrs-dm-service</artifactId>              
     </dependency>
     <dependency>
         <groupId>ca.bc.gov.nrs.dm</groupId>
-        <artifactId>nrs-dm-parent</artifactId>
-        <version>1.2.0.4</version>      
+        <artifactId>nrs-dm-parent</artifactId>      
+        <version>1.2.0.4</version>
         <type>pom</type>        
     </dependency>
     <dependency>
         <groupId>ca.bc.gov.nrs.dm</groupId>
-        <artifactId>nrs-dm-model</artifactId>
-        <version>1.2.0.4</version>              
+        <artifactId>nrs-dm-model</artifactId>              
     </dependency>
     <dependency>
         <groupId>ca.bc.gov.nrs.dm</groupId>
-        <artifactId>nrs-dm-rest-common</artifactId>
-        <version>1.2.0.4</version>              
+        <artifactId>nrs-dm-rest-common</artifactId>              
     </dependency>
     <dependency>
         <groupId>ca.bc.gov.nrs.common</groupId>
-        <artifactId>nrs-common-rest-client</artifactId>
-        <version>1.2.0.6</version>              
+        <artifactId>nrs-common-rest-client</artifactId>              
     </dependency>  
     <dependency>
         <groupId>ca.bc.gov.nrs.common</groupId>
-        <artifactId>nrs-common-model</artifactId>
-        <version>1.2.0.6</version>              
+        <artifactId>nrs-common-model</artifactId>              
     </dependency>
     <dependency>
         <groupId>ca.bc.gov.nrs.common</groupId>
-        <artifactId>nrs-common-util</artifactId>
-        <version>1.2.0.6</version>              
+        <artifactId>nrs-common-util</artifactId>              
     </dependency>    
     <dependency>
         <groupId>ca.bc.gov.nrs.common</groupId>
-        <artifactId>nrs-common-rest-common</artifactId>
-        <version>1.2.0.6</version>              
+        <artifactId>nrs-common-rest-common</artifactId>              
     </dependency>
     <dependency>
         <groupId>ca.bc.gov.nrs.common</groupId>
-        <artifactId>nrs-common-service-api</artifactId>
-        <version>1.2.0.6</version>              
+        <artifactId>nrs-common-service-api</artifactId>              
     </dependency>
      
     <dependency>
         <groupId>ca.bc.gov.webade</groupId>
-        <artifactId>webade-oauth2-rest-token-client</artifactId>
-        <version>1.2.0.4</version>              
+        <artifactId>webade-oauth2-rest-token-client</artifactId>              
     </dependency>
 	
     <dependency>
         <groupId>oracle.ucm</groupId>
-        <artifactId>ridc</artifactId>
-        <version>11.1.1</version>      
+        <artifactId>ridc</artifactId>      
     </dependency>
     <dependency>
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>
-        <version>2.8.0</version>
     </dependency>
     <dependency>
         <groupId>commons-codec</groupId>
@@ -410,14 +566,12 @@
     <dependency>
         <groupId>javax</groupId>
         <artifactId>javaee-api</artifactId>
-        <version>7.0</version>
         <scope>provided</scope>
     </dependency>
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider -->
     <dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-jaxrs</artifactId>
-			<version>1.9.13</version>
 		</dependency>
 <!--
 Testing removal of resteasy
@@ -431,7 +585,6 @@ Testing removal of resteasy
     <dependency>
         <groupId>io.swagger</groupId>
         <artifactId>swagger-annotations</artifactId>
-        <version>1.5.3</version>
     </dependency>
   </dependencies>
     
