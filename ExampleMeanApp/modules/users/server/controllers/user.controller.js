@@ -8,132 +8,16 @@ var path = require('path');
 var _ = require('lodash');
 var DBModel = require(path.resolve('./modules/core/server/controllers/core.dbmodel.controller'));
 
-var ProjectGroupController = require(path.resolve('./modules/groups/server/controllers/projectgroup.controller'));
 var ProjectController = require(path.resolve('./modules/projects/server/controllers/project.controller'));
 
 var mongoose = require ('mongoose');
 var Role  = mongoose.model ('_Role');
-var Invitation = mongoose.model('Invitation');
 
 module.exports = DBModel.extend({
 	name: 'User',
 	plural: 'users',
 	populate: 'org',
 	sort: 'lastName firstName',
-
-	searchForUsersToInvite: function (projectId, name, email, org, groupId) {
-		//console.log('projectId = ', projectId);
-		var self = this;
-		if (!_.isEmpty(projectId)) {
-
-			var getRoles = new Promise(function(resolve, reject) {
-				Role.find({
-					context: projectId,
-					user: {$ne: null}
-				}).exec(function (error, data) {
-					if (error) {
-						reject(new Error(error));
-					} else if (!data) {
-						reject(new Error('searchForUsersToInvite.getRoles: no roles found for project ', projectId));
-					} else {
-						resolve(data);
-					}
-				});
-			});
-
-			var getUsers = function(usernames) {
-				var uniqueNames = _.uniq(usernames);
-				return new Promise(function (resolve, reject) {
-					var q = {
-						username: {$in: uniqueNames}
-					};
-
-					self.listIgnoreAccess(q)
-						.then(function (res) {
-							resolve(res);
-						}, function (err) {
-							reject(new Error(err));
-						});
-				});
-			};
-
-			var getInvitations = function(users) {
-				var userIds = _.map(users, '_id');
-				return new Promise(function(resolve, reject) {
-					Invitation.find({
-						user: {$in: userIds}
-					}).exec(function (error, data) {
-						if (error) {
-							reject(new Error(error));
-						} else {
-							resolve(data);
-						}
-					});
-				});
-			};
-
-			return new Promise(function(resolve, reject) {
-				var searchusers, roles, users, invitations;
-				//console.log('searchForUsersToInvite pre) search users...');
-				return self.search(name, email, org, groupId)
-					.then(function(data) {
-						//console.log('searchForUsersToInvite pre) results: ', data.length);
-						searchusers = data;
-						//console.log('searchForUsersToInvite 1) getRoles...');
-						return getRoles;
-					})
-					.then(function(data) {
-						//console.log('searchForUsersToInvite 1) results: ', data.length);
-						roles = data;
-						var usernames = _.map(roles, 'user');
-						//console.log('searchForUsersToInvite 2) getUsers...');
-						return getUsers(usernames);
-					})
-					.then(function(data) {
-						//console.log('searchForUsersToInvite 2) results: ', data.length);
-						users = [];
-						_.forEach(data, function(u) {
-							var user = _.find(searchusers, function(i) { return i._id.toString() === u._id.toString(); });
-							if (!_.isEmpty(user))
-								users.push(u);
-						});
-						//console.log('searchForUsersToInvite 2) filtered against searchusers: ', users.length);
-						//console.log('searchForUsersToInvite 3) getInvitations...');
-						return getInvitations(users);
-					})
-					.then(function(data) {
-						//console.log('searchForUsersToInvite 3) results: ', data.length);
-						invitations = data;
-						// ok, return all users that have a bad or unknown guid
-						// also mark if they've been invited (but not accepted)...
-						var results = [];
-						_.forEach(users, function(u) {
-
-							if (_.isEmpty(u.userGuid) || _.startsWith(u.userGuid, 'esm-')) {
-								var invite = _.find(invitations, function(i) { return i.user.toString() === u._id.toString() && _.isEmpty(i.accepted); });
-
-								var cu = u.toObject();
-								cu.hasInvitation = !_.isEmpty(invite);
-								results.push(cu);
-							}
-						});
-						//console.log('searchForUsersToInvite 4) results...');
-						return results;
-					})
-					.then(function(data) {
-							//console.log('searchForUsersToInvite 4) results: ', data.length);
-							resolve(data);
-					},
-						function (err) {
-							//console.log('searchForUsersToInvite !) error: ', JSON.stringify(err));
-							reject(new Error(err));
-					});
-			});
-		} else {
-			// let's deal with this later when we are doing system level invites...
-			return Promise.resolve([]);
-		}
-	},
 
 	search: function (name, email, org, groupId) {
 		var self = this;
@@ -161,27 +45,7 @@ module.exports = DBModel.extend({
 		});
 
 		var getUsersInGroup = new Promise(function (resolve, reject) {
-			if (_.isEmpty(groupId)) {
-				resolve([]);
-			} else {
-				var groupCtrl = new ProjectGroupController(self.opts);
-				//console.log('groupCtrl.oneIgnoreAccess({_id: groupId}})...');
-				return groupCtrl.oneIgnoreAccess({_id: groupId})
-					.then(function (res) {
-						//console.log('groupCtrl.oneIgnoreAccess({_id: groupId}})...', res.members.length);
-						var personIds = _.map(res.members, '_id');
-						//console.log('groupCtrl.oneIgnoreAccess({_id: groupId}})... personIds', personIds.length);
-						//console.log('self.listIgnoreAccess({_id: {$in: personIds}})...');
-						return self.listIgnoreAccess({_id: {$in: personIds}});
-					})
-					.then(function (res) {
-						//console.log('self.listIgnoreAccess({personId: {$in: personIds}})... resolve ', res.length);
-						resolve(res);
-					}, function (err) {
-						//console.log('err = ', JSON.stringify(err));
-						reject(new Error(err));
-					});
-			}
+			resolve([]);
 		});
 
 
@@ -306,11 +170,6 @@ module.exports = DBModel.extend({
 			});
 		};
 
-		var getProjectGroups = function (id) {
-			var groupCtl = new ProjectGroupController(self.opts);
-			return groupCtl.findMany({members : {$in: [id]}}, 'name type project', 'name');
-		};
-
 		var getProjects = function (ids) {
 			var projectCtl = new ProjectController(self.opts);
 			return projectCtl.findMany({_id : {$in: ids}}, 'code name region status dateCompleted type isPublished', 'name');
@@ -335,11 +194,6 @@ module.exports = DBModel.extend({
 			.then(function(results) {
 				userSystemRoles = results || [];
 				return getProjectRoles(user.username, allSystemRoles);
-			})
-			.then(function(results) {
-				projectRoles = results || [];
-				projectIds = _.uniq(_.map(projectRoles, function(o) { return o.context; }));
-				return getProjectGroups(id);
 			})
 			.then(function(results) {
 				projectGroups = results || [];

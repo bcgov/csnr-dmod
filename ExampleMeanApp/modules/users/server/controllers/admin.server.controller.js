@@ -8,8 +8,6 @@ var path     = require('path');
 var DBModel   = require (path.resolve('./modules/core/server/controllers/core.dbmodel.controller'));
 var _         = require ('lodash');
 
-var Org = require('mongoose').model('Organization');
-
 module.exports = DBModel.extend ({
 	name : 'User',
 	plural : 'users',
@@ -60,42 +58,15 @@ module.exports = DBModel.extend ({
 				.then (function (username) {
 					//console.log('username = ', username);
 					o.username = username;
-					if (!_.isEmpty(o.org)) {
-						var orgId = _.has(o.org, '_id') ? o.org._id : o.org;
-						return new Promise(function(resolve, reject) {
-							Org.findOne({_id: orgId}).exec()
-								.then(function(res) {
-									o.orgName = res.name;
-									resolve(o);
-								}, function(err) {
-									reject(err);
-								});
-						});
-					} else {
-						o.orgName = '';
-						resolve(o);
-					}
+					o.orgName = '';
+					resolve(o);
 				})
 				.then (resolve, reject);
 		});
 	},
 
 	preprocessUpdate: function(o) {
-		//console.log('preprocessUpdate = ', JSON.stringify(o, null, 4));
-		if (!_.isEmpty(o.org)) {
-			var orgId = _.has(o.org, '_id') ? o.org._id : o.org;
-			return new Promise(function(resolve, reject) {
-				Org.findOne({_id: orgId}).exec()
-					.then(function(res) {
-						o.orgName = res.name;
-						resolve(o);
-					}, function(err) {
-						reject(err);
-					});
-			});
-		} else {
-			o.orgName = '';
-			return o;
-		}
+		o.orgName = '';
+		return o;
 	}
 });

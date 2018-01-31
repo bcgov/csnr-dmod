@@ -3,16 +3,11 @@
 var mongoose = require('mongoose');
 var phases   = require ('./memphases');
 var projects = require ('./demoprojects');
-var Phase    = mongoose.model('Phase');
 var Project  = mongoose.model('Project');
 var _ = require ('lodash');
 
 module.exports = function () {
 
-	_.each (phases, function (ph) {
-		var phase = new Phase (ph);
-		phase.save ();
-	});
 	_.each (projects, function (p) {
 	 	var project = new Project ();
 	 	//
@@ -31,15 +26,6 @@ module.exports = function () {
 	 		project.code = p.name.toLowerCase ().replace (' ', '-').substr (0, 10);
 	 	}
 	 	//
-	 	// phases
-	 	//
-	 	project.phases = [];
-	 	_.each (phases, function (ph) {
-	 		var phase = new Phase (ph);
-	 		project.phases.push (phase._id);
-	 		phase.save ();
-	 	});
-	 	//
 	 	// type
 	 	//
 	 	project.type = 'Demo';
@@ -47,10 +33,6 @@ module.exports = function () {
 	 	// region
 	 	//
 	 	project.region = p.memRegion;
-	 	//
-	 	// phases
-	 	//
-	 	project.currentPhase = project.phases[0];
 	 	//
 	 	// lats and lons
 	 	//
@@ -74,7 +56,6 @@ module.exports = function () {
 	 	// save
 	 	//
 	 	project.save ();
-
 	 });
 
 };

@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var chalk         = require('chalk');
 var _             = require('lodash');
 var Integration  = mongoose.model ('Integration');
-var Template  = mongoose.model ('Template');
 var promise = require ('promise');
 
 console.log(chalk.bold.red('Warning:  Database seeding is turned on'));
@@ -101,53 +100,12 @@ var seedingAsync = function() {
 
 // -------------------------------------------------------------------------
 //
-// Topics
-//
-// -------------------------------------------------------------------------
-	checkIntegration('loadtopics5').then(function () {
-		require('../seed-data/loadtopics')();
-	});
-
-// -------------------------------------------------------------------------
-//
-// artifact types
-//
-// -------------------------------------------------------------------------
-	checkIntegration('loadartifacts81').then(function () {
-		require('../seed-data/loadartifacts')();
-	});
-// -------------------------------------------------------------------------
-//
-// artifacts etc for decision packages
-//
-// -------------------------------------------------------------------------
-	checkIntegration('decisions7').then(function () {
-		require('../seed-data/decisions')();
-	});
-
-// -------------------------------------------------------------------------
-//
 // default project roles
 //
 // -------------------------------------------------------------------------
 	checkIntegration('defaultprojectroles').then(function () {
 		require('../seed-data/loadprojectroles')();
 	});
-
-// -------------------------------------------------------------------------
-//
-// default project roles
-//
-// -------------------------------------------------------------------------
-	checkIntegration('emailtemplates3').then(function () {
-		require('../seed-data/loademailtemplates')();
-	});
-
-	if (process.env.SEED_MEM === 'true') {
-		checkIntegration('loadmem').then(function () {
-			require('../seed-data/loadmem')();
-		});
-	}
 
 // =========================================================================
 //
@@ -171,7 +129,6 @@ var seedingAsync = function() {
 		require('../seed-data/users-other')();
 
         // load the demo data.
-
         require('../seed-data/loaddemo')();
 
 		checkIntegration('loadmem').then(function () {
@@ -187,19 +144,6 @@ var seedingAsync = function() {
 		});
 
 	}
-	checkIntegration('sysroles2').then(function () {
-		require('../seed-data/loadroles').sysroles2();
-	});
-
-	checkIntegration('sysroles2x1').then(function () {
-		require('../seed-data/loadroles').sysroles2();
-	});
-
-	checkIntegration('sysroles3').then(function () {
-		require('../seed-data/loadroles').sysroles3();
-	});
-
-
 	checkIntegration('app-20160727.10').then(function () {
 		require('../seed-data/application')();
 	});

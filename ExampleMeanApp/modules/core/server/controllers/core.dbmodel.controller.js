@@ -736,12 +736,7 @@ _.extend (DBModel.prototype, {
 				return Promise.all (parray);
 			})
 			.then (function () {
-				if (optionalInheritFromId) {
-					var ArtifactModel = mongoose.model ('Artifact');
-					return ArtifactModel.findOne({_id: optionalInheritFromId});
-				} else {
-					return model;
-				}
+				return model;
 			})
 			.then (function (m) {
 				if (optionalInheritFromId) {
