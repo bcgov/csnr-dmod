@@ -14,12 +14,6 @@ module.exports = function (app) {
 			return ctrl.search(req.query.name, req.query.email, req.query.org, req.query.groupId);
 		}));
 
-	app.route('/api/toinvite/user')
-		.all(policy('user'))
-		.get(routes.setAndRun(User, function (ctrl, req) {
-			return ctrl.searchForUsersToInvite(req.query.projectId, req.query.name, req.query.email, req.query.org, req.query.groupId);
-		}));
-
 	app.route('/api/user/roles/in/project/:projectid')
 		.all(policy('guest'))
 		.get(routes.setAndRun(User, function (ctrl, req) {

@@ -135,7 +135,7 @@ angular.module('project').config (
 	.state('p.schedule', {
 		url: '/schedule',
 		templateUrl: 'modules/projects/client/views/project-partials/project.schedule.html',
-		controller: function ($scope, $state, project, ProjectModel, MilestoneModel, PhaseModel, $rootScope, ArtifactModel, $modal, PhaseBaseModel) {
+		controller: function ($scope, $state, project, ProjectModel, MilestoneModel, $rootScope, $modal) {
 			var self = this;
 
 			$scope.milestonesForPhases = {};

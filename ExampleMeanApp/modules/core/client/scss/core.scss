@@ -4235,14 +4235,9 @@ tmpl-template-render {
 
 // MODULES
 @import "modules/codelists/client/scss/codelist.scss";
-@import "modules/communications/client/scss/communications.scss";
-@import "modules/invitations/client/scss/invitations.scss";
-@import "modules/maps/client/scss/map.scss";
 @import "modules/projects/client/scss/project-details.scss";
 @import "modules/projects/client/scss/project-schedule.scss";
 @import "modules/projects/client/scss/project-timeline.scss";
 @import "modules/projects/client/scss/projects-abstract.scss";
-@import "modules/project-comments/client/scss/project-comments.scss";
 @import "modules/users/client/scss/user-entry.scss";
 @import "modules/users/client/scss/user-search-chooser.scss";
-@import "modules/vcs/client/scss/vc-list.scss";

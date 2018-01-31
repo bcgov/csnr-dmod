@@ -60,18 +60,6 @@ module.exports = require ('../../../core/server/controllers/core.schema.controll
 	location              : { type:String, default:'' },
 	provElecDist 		  : { type:String, default:'' },
 	fedElecDist 		  : { type:String, default:'' },
-	//
-	// all the phases that make this project up, in order
-	//
-	phases                : [ { type:'ObjectId', ref:'Phase'} ],
-	//
-	// ancestry
-	//
-	stream                : { type:'ObjectId', ref:'Stream', index:true, default:null },
-	//
-	// the proponent and their orgCode, plus the primary contact for same
-	//
-	proponent             : { type:'ObjectId', ref:'Organization', index:true, default:null },
 	orgCode               : { type:String, default: '' },
 	primaryContact        : { type:'ObjectId', ref:'User', default:null },
 	//
@@ -108,9 +96,6 @@ module.exports = require ('../../../core/server/controllers/core.schema.controll
 	//
 	// phase data is stored below, so these are merely keys into that data
 	//
-	currentPhase       : { type:'ObjectId', ref:'Phase', index:true },
-	currentPhaseCode   : { type: String, default:'' },
-	currentPhaseName   : { type: String, default:'' },
 	overallProgress    : { type: Number, default:0 },
 	lat                : { type: Number, default:'' },
 	lon                : { type: Number, default:'' },

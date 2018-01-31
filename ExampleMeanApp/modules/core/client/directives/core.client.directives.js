@@ -14,7 +14,7 @@ angular.module('core')
 // and thingamajig
 //
 // -------------------------------------------------------------------------
-.directive('rolePermissionsModal', function ($state, $modal, Authentication, Application, AccessModel, _, ArtifactModel, VcModel) {
+.directive('rolePermissionsModal', function ($state, $modal, Authentication, Application, AccessModel, _) {
 	return {
 		restrict: 'A',
 		scope: {
@@ -196,20 +196,6 @@ angular.module('core')
 				.result.then(function (data) {
 					AccessModel.setPermissionRoleIndex(data.resource, data.data)
 					.then( function () {
-						// Need to persist to conaining element in some cases.  e.g.: This is so that
-						// when a user clicks on a Vc gear, they are actually changing both the Vc
-						// permission as well as the underlying artifact permission.
-						if (data.data.schemaName === 'Vc') {
-							VcModel.lookup(data.resource)
-							.then(function (vc) {
-								return ArtifactModel.lookup(vc.artifact);
-							})
-							.then( function (art) {
-								// Change the schemaName or else it won't match.
-								data.data.schemaName = 'Artifact';
-								AccessModel.setPermissionRoleIndex(art._id, data.data);
-							});
-						}
 					}, function(e) {
 						console.log('Error on AccessModel.setPermissionRoleIndex(' + data.resource + ', ' + JSON.stringify(data.data) + ') = ', JSON.stringify(e));
 					})

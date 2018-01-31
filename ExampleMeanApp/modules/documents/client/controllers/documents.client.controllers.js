@@ -134,9 +134,9 @@ function controllerDocumentLinkGlobal($scope, Upload, $timeout, Document, _) {
 // CONTROLLER: Document Upload General
 //
 // -----------------------------------------------------------------------------------
-controllerDocumentUploadGlobal.$inject = ['$rootScope', '$scope', 'Upload', '$timeout', 'Document', '_', 'ENV', 'ArtifactModel'];
+controllerDocumentUploadGlobal.$inject = ['$rootScope', '$scope', 'Upload', '$timeout', 'Document', '_', 'ENV'];
 /* @ngInject */
-function controllerDocumentUploadGlobal($rootScope, $scope, Upload, $timeout, Document, _, ENV, ArtifactModel) {
+function controllerDocumentUploadGlobal($rootScope, $scope, Upload, $timeout, Document, _, ENV) {
 	var docUpload = this;
 	var parentId = null;
 
@@ -360,9 +360,9 @@ function controllerDocumentList($scope, sAuthentication) {
 // CONTROLLER: Document List
 //
 // -----------------------------------------------------------------------------------
-controllerDocumentBrowser.$inject = ['$scope', 'Document', '$rootScope', 'Authentication', 'ENV', '_', 'NgTableParams', 'ArtifactModel', 'PhaseModel'];
+controllerDocumentBrowser.$inject = ['$scope', 'Document', '$rootScope', 'Authentication', 'ENV', '_', 'NgTableParams'];
 /* @ngInject */
-function controllerDocumentBrowser($scope, Document, $rootScope, Authentication, ENV, _, NgTableParams, ArtifactModel, PhaseModel) {
+function controllerDocumentBrowser($scope, Document, $rootScope, Authentication, ENV, _, NgTableParams) {
 	var docBrowser = this;
 
 	$scope.environment = ENV;

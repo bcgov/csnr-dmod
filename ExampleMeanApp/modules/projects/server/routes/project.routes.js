@@ -5,7 +5,6 @@
 //
 // =========================================================================
 var Project     = require ('../controllers/project.controller');
-var projectLoad = require ('../controllers/project.load.controller');
 var _           = require ('lodash');
 var routes = require ('../../../core/server/controllers/core.routes.controller');
 var policy = require ('../../../core/server/controllers/core.policy.controller');
@@ -169,40 +168,6 @@ module.exports = function (app) {
 			});
 		}));
 
-	app.route ('/api/projects/import/eao')
-		.all (policy ('user'))
-		.post (function (req, res) {
-			var file = req.files.file;
-			if (file) {
-				// console.log("Received contact import file:",file);
-				routes.setSessionContext(req)
-				.then( function (opts) {
-					// console.log("opts generated.");
-					return projectLoad (file, req, res, opts);
-				})
-				.then (function (data) {
-					// console.log("finished");
-					res.json (data);
-				});
-			}
-		});
-	app.route ('/api/projects/import/mem')
-		.all (policy ('user'))
-		.post (function (req, res) {
-			var file = req.files.file;
-			if (file) {
-				// console.log("Received contact import file:",file);
-				routes.setSessionContext(req)
-				.then( function (opts) {
-					// console.log("opts generated.");
-					return projectLoad (file, req, res, opts);
-				})
-				.then (function (data) {
-					// console.log("finished");
-					res.json (data);
-				});
-			}
-		});
 	app.route ('/api/project/:project/directory/add/:parentid')
 		.all (policy ('user'))
 		.put (routes.setAndRun (Project, function (model, req) {
