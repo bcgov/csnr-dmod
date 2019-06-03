@@ -1,10 +1,5 @@
-# CSNR-DMOD #
-
--------------
-
-# Introduction #
-The CSNR-DMOD project demonstrates the integration of the NRS Document Service with OpenShift.
-
+# Introduction
+The CSNR-DMOD project demonstrates the integration of the NRS Document Service with OpenShift.  The project documentation is kept in the github [DMOD Wiki](https://github.com/bcgov/csnr-dmod/wiki/)    
 
 The prototype consists of the following:
 - **DocumentServices** - a microservice that acts as a bridge between OpenShift and NRS Document Service. An OpenShift template has been created for this microservice in order to be usable by other applications that need to access document management system in the OpenShift environment. Refer to [Document Services](https://github.com/bcgov/csnr-dmod/wiki/Document-Microservice) for detailed documentation.
@@ -14,10 +9,10 @@ The prototype consists of the following:
 	- Display, Download, Upload of documents for logged in users
 	- Management of Folders and Documents for logged in users
 
-## Development Environment ##
+## Development Environment
 
-### ExampleMeanApp: Node.js ###
---------------------------------
+### ExampleMeanApp: Node.js
+
 Install the following:
 - Ruby (https://www.ruby-lang.org/en/downloads/)
 - sass (a Ruby package)
@@ -47,10 +42,9 @@ Run Locally Using Eclipse IDE
     Right click on the server.js file and execute Run As Node.js Application 
 ```
 
-### DocumentServices: Java ###
-----------------------------
+### DocumentServices: Java  
 
-#### Prerequisites: #### 
+#### Prerequisites:   
 1. The following must be installed:
 	- Java JDK 1.7 or newer (http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
 	- Maven (https://maven.apache.org/download.cgi)
@@ -78,8 +72,7 @@ Run Locally Using Eclipse IDE
 
 
 
-### OpenShift Environment : Build ###
------------------------
+### OpenShift Environment : Build  
 
 Secret
 -------
@@ -119,9 +112,7 @@ oc volumes dc/nexus --add --name nexus-volume-1 --type persistentVolumeClaim --m
 You can then create a Node.js proxy repository, and put the URL for that proxy repository into the NPM_MIRROR environment variable in any Node.js applications.
 
 
-### OpenShift Environment : Deployment ###
-
-
+### OpenShift Environment : Deployment   
 
 Secret
 -------
@@ -176,7 +167,7 @@ To report bugs/issues/features requests, please file an [issue](https://github.c
 ### How to Contribute
 If you would like to contribute, please see our [contributing](CONTRIBUTING.md) guidelines.
 
-Please note that this project is released with a [Contributor Code of Conduct](code_of_conduct.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ### Licence
 	Copyright 2017 Province of British Columbia
