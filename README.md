@@ -174,7 +174,7 @@ Deployment Template
 To report bugs/issues/features requests, please file an [issue](https://github.com/bcgov/csnr-dmod/issues/).
 
 ### How to Contribute
-If you would like to contribute, please see our [contributing](contributing.md) guidelines.
+If you would like to contribute, please see our [contributing](CONTRIBUTING.md) guidelines.
 
 Please note that this project is released with a [Contributor Code of Conduct](code_of_conduct.md). By participating in this project you agree to abide by its terms.
 
