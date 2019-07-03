@@ -34,3 +34,6 @@ patch:
   'npm:uglify-js:20151024':
     - swig > uglify-js:
         patched: '2019-07-03T14:34:19.619Z'
+  'npm:tough-cookie:20160722':
+    - phantomjs > request > tough-cookie:
+        patched: '2019-07-03T14:59:40.904Z'
