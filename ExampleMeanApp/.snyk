@@ -1,0 +1,36 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - node-rest-client > debug:
+        patched: '2019-07-03T14:34:19.619Z'
+    - socket.io > socket.io-adapter > socket.io-parser > debug:
+        patched: '2019-07-03T14:34:19.619Z'
+  'npm:hoek:20180212':
+    - phantomjs > request > hawk > hoek:
+        patched: '2019-07-03T14:34:19.619Z'
+    - phantomjs > request > hawk > boom > hoek:
+        patched: '2019-07-03T14:34:19.619Z'
+    - phantomjs > request > hawk > sntp > hoek:
+        patched: '2019-07-03T14:34:19.619Z'
+    - phantomjs > request > hawk > cryptiles > boom > hoek:
+        patched: '2019-07-03T14:34:19.619Z'
+  'npm:ms:20170412':
+    - node-rest-client > debug > ms:
+        patched: '2019-07-03T14:34:19.619Z'
+    - socket.io > socket.io-adapter > socket.io-parser > debug > ms:
+        patched: '2019-07-03T14:34:19.619Z'
+  'npm:request:20160119':
+    - phantomjs > request:
+        patched: '2019-07-03T14:34:19.619Z'
+  'npm:tough-cookie:20170905':
+    - phantomjs > request > tough-cookie:
+        patched: '2019-07-03T14:34:19.619Z'
+  'npm:tunnel-agent:20170305':
+    - phantomjs > request > tunnel-agent:
+        patched: '2019-07-03T14:34:19.619Z'
+  'npm:uglify-js:20151024':
+    - swig > uglify-js:
+        patched: '2019-07-03T14:34:19.619Z'
