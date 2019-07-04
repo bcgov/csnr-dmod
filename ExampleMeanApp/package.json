@@ -74,7 +74,7 @@
     "tree-model": "^1.0.6",
     "uid-safe": "^2.1.4",
     "validator": "^9.4.1",
-    "snyk": "^1.189.0"
+    "snyk": "^1.190.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
