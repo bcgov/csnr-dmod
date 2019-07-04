@@ -37,3 +37,46 @@ patch:
   'npm:tough-cookie:20160722':
     - phantomjs > request > tough-cookie:
         patched: '2019-07-03T14:59:40.904Z'
+  SNYK-JS-LODASH-450202:
+    - snyk > inquirer > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - connect-mongo > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - acl > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - cheerio > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - grunt > grunt-legacy-log > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - grunt > grunt-legacy-util > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - mongoose > async > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - acl > async > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - grunt > grunt-legacy-log > grunt-legacy-log-utils > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
+    - phantomjs > request > form-data > async > lodash:
+        patched: '2019-07-04T08:45:10.642Z'
