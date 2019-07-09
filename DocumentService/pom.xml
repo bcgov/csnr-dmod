@@ -18,7 +18,7 @@
 
 
     <cxf.plugin.version>3.0.4.redhat-621084</cxf.plugin.version>
-    <jetty-version>9.2.10.v20150310</jetty-version>
+    <jetty-version>9.2.27.v20190403</jetty-version>
 
     <http.port>8080</http.port>
 
